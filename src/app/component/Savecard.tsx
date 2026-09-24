@@ -8,20 +8,20 @@ import { RxCross2 } from "react-icons/rx";
 const Savecard = () => {
   return (
     <div>
-      <div className="border-b border-gray-700 bg-[#18181B] px-8 py-3 grid grid-cols-2 rounded-xl">
-        <div className="flex gap-4 items-center">
+      <div className="border-b border-gray-700 bg-[#18181B] px-8 py-3 grid grid-cols-1 md:grid-cols-2 rounded-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
           <div className="">
-            <Image src={cardimg} alt="card" width={144} className="h-[80px]"/>
+            <Image src={cardimg} alt="card" width={144} className="h-20"/>
           </div>
           <div className="">
-            <h2 className="font-bold text-[18px] text-[#FFFFFF] mb-3">
+            <h2 className="font-bold md:text-[18px] text-[#FFFFFF] mb-3">
               BARBELL BENCH PRESS
             </h2>
-            <p className="font-normal text-[#9CA3AF] text-[12px] my-2">
+            <p className="font-normal text-[#9CA3AF] md:text-[12px] my-2">
               Barbell, Bench
             </p>
 
-            <div className="grid grid-cols-3 items-center gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
               <span className="flex gap-2 text-[#9CA3AF] items-center">
                 <i className="text-[#C2F800]">
                   <MdAccessTime />
@@ -45,7 +45,7 @@ const Savecard = () => {
         </div>
 
         <div className="flex justify-end">
-          <div className="flex gap-4 my-4">
+          <div className="block md:flex gap-4 my-4">
             <button className="px-4 py-2 my-4 rounded-xl text-[12px] font-bold border-2 border-[#374151]">
               <span className="flex gap-4 text-[#9CA3AF] items-center">
                 Save for later

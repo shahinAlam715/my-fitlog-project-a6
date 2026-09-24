@@ -9,7 +9,7 @@ const Banner = () => {
           <h4 className="font-bold text-[12px] text-[#C2F800]">
             WORKOUT LIBRARY
           </h4>
-          <h2 className="font-extrabold text-[40px] text-[#ffff] my-3">
+          <h2 className="font-[var(--font-oswald)] font-bold text-[40px] text-[#ffff] my-3">
             TRAIN WITH INTENT. LOG
             <br />
             EVERY SET.
@@ -18,7 +18,7 @@ const Banner = () => {
             FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
             into today,s plan, and watch the week,s work add up.
           </p>
-          <button className="px-4 py-2 bg-[#C2F800] my-4 rounded-[5px] text-[12px] font-bold">BROWSE WORKOUTS</button>
+          <button className="px-4 py-2 bg-[#C2F800] my-4 rounded-[5px] text-black text-[12px] font-bold">BROWSE WORKOUTS</button>
         </div>
         <div className="flex justify-center md:justify-end">
           <Image src={banimg} alt="banimg" height={334} width={334} />

@@ -5,15 +5,15 @@ const MyplanPage = () => {
   return (
     <div>
       <div className="container mx-auto my-16">
-        <div className="">
+        <div className="p-2">
           <h2 className="font-bold text-[30px] text-[#FFFFFF] my-2">MY PLAN</h2>
           <p className="font-normal text-[14px] text-[#9CA3AF] my-2">
             Cap of five lifts for today. Finish them, then load more.
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-xl border border-gray-700 my-10 gap-2">
-          <div className="grid grid-cols-3 items-center border-b border-gray-700 bg-[#18181B] px-8 py-4">
+        <div className="overflow-hidden rounded-xl border border-gray-700 my-10 gap-2 p-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 items-center border-b border-gray-700 bg-[#18181B] px-8 py-4">
             {/* LEFT */}
             <div className="flex flex-col">
               <h3 className="text-[14px] font-medium text-gray-400">
@@ -24,7 +24,7 @@ const MyplanPage = () => {
             </div>
 
             {/* CENTER */}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col md:items-center">
               <h3 className="text-[14px] font-medium text-gray-200">
                 COMPLETED
               </h3>
@@ -33,7 +33,7 @@ const MyplanPage = () => {
             </div>
 
             {/* RIGHT */}
-            <div className="flex flex-col items-end">
+            <div className="flex flex-col md:items-end">
               <h3 className="text-[14px] font-medium text-gray-200">
                 CALORIES
               </h3>
@@ -43,7 +43,7 @@ const MyplanPage = () => {
           </div>
         </div>
 
-        <div className="my-10 flex items-start gap-6">
+        <div className="my-10 flex justify-between gap-6 p-2">
           {/* LEFT — Tabs */}
           <div className="min-w-0 flex-1">
             <div className="tabs tabs-lift w-full">
@@ -87,6 +87,7 @@ const MyplanPage = () => {
             </select>
           </div>
         </div>
+
       </div>
     </div>
   );
