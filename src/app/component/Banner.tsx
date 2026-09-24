@@ -4,7 +4,7 @@ import banimg from "@/assets/banner.png";
 const Banner = () => {
   return (
     <div className="bg-black">
-      <div className="grid grid-cols-2 container mx-auto p-4 items-center bg-[#262626] my-12 rounded-3xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 container mx-auto p-4 items-center bg-[#262626] my-12 rounded-3xl">
         <div className="">
           <h4 className="font-bold text-[12px] text-[#C2F800]">
             WORKOUT LIBRARY
@@ -20,7 +20,7 @@ const Banner = () => {
           </p>
           <button className="px-4 py-2 bg-[#C2F800] my-4 rounded-[5px] text-[12px] font-bold">BROWSE WORKOUTS</button>
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-center md:justify-end">
           <Image src={banimg} alt="banimg" height={334} width={334} />
         </div>
       </div>

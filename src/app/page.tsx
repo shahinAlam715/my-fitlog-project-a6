@@ -5,8 +5,8 @@ export default function Home() {
   return (
    <>
    <div className="">
-    {/* <Banner/>
-    <LibraryPage/> */}
+    <Banner/>
+    {/* <LibraryPage/> */}
    </div>
    </>
   );
