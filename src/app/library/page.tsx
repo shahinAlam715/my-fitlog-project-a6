@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { FaFire } from 'react-icons/fa';
 import { IoIosStarOutline } from 'react-icons/io';
 import { MdAccessTime } from 'react-icons/md';
-import cardimg from "@/assets/card.png"
 import { Ifitlog } from '@/type';
 import Link from 'next/link';
 

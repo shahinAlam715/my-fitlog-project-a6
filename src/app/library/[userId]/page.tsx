@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { IoBagAdd } from "react-icons/io5";
-import { MdSaveAlt } from "react-icons/md";
 import { Ifitlog } from "@/type";
+import AddtodayplanCard from "@/app/component/AddtodayplanCard";
+import SaveplanCard from "@/app/component/SaveplanCard";
 
 interface IdetailsProps {
   params: Promise<{ userId: string }>;
@@ -18,7 +18,7 @@ const DetailsPage = async({params}: IdetailsProps) => {
   return (
     <div>
           
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 container mx-auto my-15">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 container mx-auto pt-15">
 
         <div className="flex justify-center md:justify-start p-2">
           <Image
@@ -115,13 +115,9 @@ const DetailsPage = async({params}: IdetailsProps) => {
                 </ol>
             </div>
 
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-            <button className="px-4 py-2 bg-[#C2F800] my-4 rounded-xl text-[12px] font-bold text-[#0F1115]">
-            <span className='flex gap-4 justify-center items-center'><i><IoBagAdd /></i> Add to today,s plan</span>
-            </button>
-            <button className="px-4 py-2 my-4 rounded-xl text-[12px] font-bold border-2 border-[#374151]">
-            <span className='flex gap-4 text-[#9CA3AF] justify-center items-center'><i><MdSaveAlt /></i> Save for later</span>
-            </button>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 my-4">
+                <AddtodayplanCard data={data}/>
+                <SaveplanCard data={data}/>
           </div>
 
         </div>

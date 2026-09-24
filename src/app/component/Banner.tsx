@@ -3,8 +3,8 @@ import banimg from "@/assets/banner.png";
 
 const Banner = () => {
   return (
-    <div className="bg-black">
-      <div className="grid grid-cols-1 md:grid-cols-2 container mx-auto p-4 items-center bg-[#262626] my-12 rounded-3xl">
+    <div className="bg-black pt-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 container mx-auto p-4 items-center bg-[#262626] rounded-3xl">
         <div className="">
           <h4 className="font-bold text-[12px] text-[#C2F800]">
             WORKOUT LIBRARY
