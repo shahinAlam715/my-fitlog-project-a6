@@ -6,7 +6,7 @@ export default function Home() {
    <>
    <div className="">
     <Banner/>
-    {/* <LibraryPage/> */}
+    <LibraryPage/>
    </div>
    </>
   );

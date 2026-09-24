@@ -12,7 +12,7 @@ const DetailsPage = () => {
             src={cardimg}
             alt="cardimg"
             width={588}
-            className="rounded-3xl h-[788px]"
+            className="rounded-3xl h-197"
           />
         </div>
         <div className="">

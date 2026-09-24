@@ -12,7 +12,7 @@ const Myplaincard = () => {
       <div className="border-b border-gray-700 bg-[#18181B] px-8 py-3 grid grid-cols-2 rounded-xl">
         <div className="flex gap-4 items-center">
           <div className="">
-            <Image src={cardimg} alt="card" width={144} className="h-[80px]"/>
+            <Image src={cardimg} alt="card" width={144} className="h-20"/>
           </div>
           <div className="">
             <h2 className="font-bold text-[18px] text-[#FFFFFF] mb-3">

@@ -75,7 +75,7 @@ const MyplanPage = () => {
           </div>
 
           {/* RIGHT — Select */}
-          <div className="shrink-0 w-[100px]">
+          <div className="shrink-0 w-25">
             <select
               defaultValue="Pick a Framework"
               className="select select-info"
