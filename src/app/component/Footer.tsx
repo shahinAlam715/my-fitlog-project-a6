@@ -9,11 +9,11 @@ const Footer = () => {
         <div className="">
             <div className="flex items-center gap-2">
                     <Image src={logo} alt='logo' height={24} width={24}/>
-                    <h3 className='font-extrabold text-[18px] text-[#9CA3AF]'>FITLOG</h3>
+                    <h3 className='font-extrabold md:text-[18px] text-[#9CA3AF]'>FITLOG</h3>
                 </div>
         </div>
         <div className="flex justify-end">
-          <p className="font-medium text-[12px] text-[#9CA3AF]">
+          <p className="font-medium text-[8px] sm:text-[10px] md:text-[12px] text-[#9CA3AF]">
            © 2026 FitLog — Workout Library. Train hard, log honest.
           </p>
         </div>

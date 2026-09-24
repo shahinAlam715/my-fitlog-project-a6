@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="bg-black">
           {children}
         </div>
-        {/* <Footer/> */}
+        <Footer/>
       </body>
     </html>
   );
