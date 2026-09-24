@@ -7,8 +7,17 @@ import Link from "next/link";
 import { Ifitlog } from "@/type";
 
 const MyplanPage = () => {
+  const [ActiveTab, setActiveTab] = useState<"plan" | "save">("plan");
   const { addplan, saveplan } = useContext(FitContext);
 
+  const currentPlan = ActiveTab === "plan" ? addplan : saveplan;
+
+  const currentExersize = currentPlan.length;
+  const currentCalories = currentPlan.reduce((sum, item)=> sum + item.caloriesBurned,0)
+  const currentMinites = currentPlan.reduce((sum, item)=> sum + item.duration,0)
+
+
+  // Sorting Start
   const [sortby, setsortBy] = useState<"duration" | "calories" | "rating">(
     "duration",
   );
@@ -29,7 +38,7 @@ const MyplanPage = () => {
 
   const allAddplan = sortingPlan(addplan);
   const allSaveplan = sortingPlan(saveplan);
-
+  // Sorting End
   return (
     <div>
       <div className="container mx-auto pt-10 py-4">
@@ -48,14 +57,14 @@ const MyplanPage = () => {
                 Exercises
               </h3>
 
-              <span className="text-[36px] font-bold text-[#C2F800]">0</span>
+              <span className="text-[36px] font-bold text-[#C2F800]">{currentExersize}</span>
             </div>
 
             {/* CENTER */}
             <div className="flex flex-col">
               <h3 className="text-[14px] font-medium text-gray-200">Minutes</h3>
 
-              <span className="text-[36px] font-bold text-white">0</span>
+              <span className="text-[36px] font-bold text-white">{currentMinites}</span>
             </div>
 
             {/* RIGHT */}
@@ -64,7 +73,7 @@ const MyplanPage = () => {
                 Calories
               </h3>
 
-              <span className="text-[36px] font-bold text-white">0</span>
+              <span className="text-[36px] font-bold text-white">{currentCalories}</span>
             </div>
           </div>
         </div>
@@ -79,6 +88,8 @@ const MyplanPage = () => {
                 name="my_tabs_3"
                 className="tab"
                 aria-label="My Plan"
+                defaultChecked
+                onChange={()=>setActiveTab("plan")}
               />
 
               <div className="tab-content w-full border-base-300 bg-base-100 p-6">
@@ -110,7 +121,7 @@ const MyplanPage = () => {
                 name="my_tabs_3"
                 className="tab"
                 aria-label="Saved"
-                defaultChecked
+                onChange={()=>setActiveTab("save")}
               />
 
               <div className="tab-content w-full border-base-300 bg-base-100 p-6">
