@@ -10,12 +10,19 @@ const MyplanPage = () => {
   const [ActiveTab, setActiveTab] = useState<"plan" | "save">("plan");
   const { addplan, saveplan } = useContext(FitContext);
 
+  console.log(addplan, "addplan");
+
   const currentPlan = ActiveTab === "plan" ? addplan : saveplan;
 
   const currentExersize = currentPlan.length;
-  const currentCalories = currentPlan.reduce((sum, item)=> sum + item.caloriesBurned,0)
-  const currentMinites = currentPlan.reduce((sum, item)=> sum + item.duration,0)
-
+  const currentCalories = currentPlan.reduce(
+    (sum, item) => sum + item.caloriesBurned,
+    0,
+  );
+  const currentMinites = currentPlan.reduce(
+    (sum, item) => sum + item.duration,
+    0,
+  );
 
   // Sorting Start
   const [sortby, setsortBy] = useState<"duration" | "calories" | "rating">(
@@ -57,14 +64,18 @@ const MyplanPage = () => {
                 Exercises
               </h3>
 
-              <span className="text-[36px] font-bold text-[#C2F800]">{currentExersize}</span>
+              <span className="text-[36px] font-bold text-[#C2F800]">
+                {currentExersize}
+              </span>
             </div>
 
             {/* CENTER */}
             <div className="flex flex-col">
               <h3 className="text-[14px] font-medium text-gray-200">Minutes</h3>
 
-              <span className="text-[36px] font-bold text-white">{currentMinites}</span>
+              <span className="text-[36px] font-bold text-white">
+                {currentMinites}
+              </span>
             </div>
 
             {/* RIGHT */}
@@ -73,98 +84,100 @@ const MyplanPage = () => {
                 Calories
               </h3>
 
-              <span className="text-[36px] font-bold text-white">{currentCalories}</span>
+              <span className="text-[36px] font-bold text-white">
+                {currentCalories}
+              </span>
             </div>
           </div>
         </div>
 
-        <div className="my-10 flex justify-between gap-6 p-2">
+        <div className="my-10 block md:flex justify-between gap-6 p-2 items-center">
           {/* LEFT — Tabs */}
-          <div className="min-w-0 flex-1">
-            <div className="tabs tabs-lift w-full">
-              {/* Tab 1 */}
-              <input
-                type="radio"
-                name="my_tabs_3"
-                className="tab"
-                aria-label="My Plan"
-                defaultChecked
-                onChange={()=>setActiveTab("plan")}
-              />
-
-              <div className="tab-content w-full border-base-300 bg-base-100 p-6">
-                {addplan.length > 0 ? (
-                  <Myplaincard allAddplan={allAddplan} />
-                ) : (
-                  <div className="rounded-2xl border-2 border-[#A1A1AA] flex min-h-[70vh] flex-col items-center justify-center bg-black px-4 text-center">
-                    <h2 className="mt-6 text-5xl font-bold text-white">
-                      NOTHING HERE YET
-                    </h2>
-
-                    <p className="mt-3 max-w-md text-gray-400">
-                      Browse the library and add a lift to get today moving.
-                    </p>
-
-                    <Link
-                      href="/"
-                      className="mt-8 rounded-xl bg-[#C2F800] px-6 py-3 font-bold text-black transition hover:bg-[#b5ed00]"
-                    >
-                      Go to workouts
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Tab 2 */}
-              <input
-                type="radio"
-                name="my_tabs_3"
-                className="tab"
-                aria-label="Saved"
-                onChange={()=>setActiveTab("save")}
-              />
-
-              <div className="tab-content w-full border-base-300 bg-base-100 p-6">
-                {saveplan.length > 0 ? (
-                  <Savecard allSaveplan={allSaveplan} />
-                ) : (
-                  <div className="rounded-2xl border-2 border-[#A1A1AA] flex min-h-[70vh] flex-col items-center justify-center bg-black px-4 text-center">
-                    <h2 className="mt-6 text-5xl font-bold text-white">
-                      NOTHING HERE YET
-                    </h2>
-
-                    <p className="mt-3 max-w-md text-gray-400">
-                      Browse the library and add a lift to get today moving.
-                    </p>
-
-                    <Link
-                      href="/"
-                      className="mt-8 rounded-xl bg-[#C2F800] px-6 py-3 font-bold text-black transition hover:bg-[#b5ed00]"
-                    >
-                      Go to workouts
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </div>
+          <div className="flex items-center bg-[#151921] px-2 py-2 gap-2 rounded-xl my-2">
+            <button onClick={() => setActiveTab("plan")} className={`${ActiveTab === "plan" ? "bg-black text-[#FFFFFF] py-2 px-6 rounded-xl" :"text-[#8A92A0] py-2 px-6 rounded-xl"}`}>MyPlan</button>
+            <button  onClick={() => setActiveTab("save")} className={`${ActiveTab === "save" ? "bg-black text-[#FFFFFF] py-2 px-6 rounded-xl" :"text-[#8A92A0] py-2 px-6 rounded-xl"}`}>
+              SavePlan
+            </button>
           </div>
 
           {/* RIGHT — Select */}
-          <div className="shrink-0 w-25">
-            <select
-              value={sortby}
-              onChange={(e) =>
-                setsortBy(e.target.value as "duration" | "calories" | "rating")
-              }
-              className="select select-info"
-            >
-              <option disabled>Sort By</option>
-              <option value={"duration"}>Duration</option>
-              <option value={"calories"}>Calories</option>
-              <option value={"rating"}>Rating</option>
-            </select>
+          <div className="flex gap-2 items-center my-2">
+            <h2 className="text-[#8A92A0]">Sort By :</h2>
+            <div className="shrink-0 w-25">
+              <select
+                value={sortby}
+                onChange={(e) =>
+                  setsortBy(
+                    e.target.value as "duration" | "calories" | "rating",
+                  )
+                }
+                className="select select-info"
+              >
+                <option disabled>Sort By</option>
+                <option value={"duration"}>Duration</option>
+                <option value={"calories"}>Calories</option>
+                <option value={"rating"}>Rating</option>
+              </select>
+            </div>
           </div>
         </div>
+
+        <div className="min-w-0 flex-1">
+          
+           
+            {ActiveTab === "plan" && ( <div className="w-full border-base-300 bg-base-100 p-6 rounded-xl">
+              {addplan.length > 0 ? (
+                <Myplaincard allAddplan={allAddplan} />
+              ) : (
+                <div className="rounded-2xl border-2 border-[#A1A1AA] flex min-h-[70vh] flex-col items-center justify-center bg-black px-4 text-center">
+                  <h2 className="mt-6 md:text-5xl font-bold text-white">
+                    NOTHING HERE YET
+                  </h2>
+
+                  <p className="mt-3 max-w-md text-gray-400">
+                    Browse the library and add a lift to get today moving.
+                  </p>
+
+                  <Link
+                    href="/"
+                    className="mt-8 my-2 rounded-xl bg-[#C2F800] px-6 py-3 md:font-bold text-black transition hover:bg-[#b5ed00]"
+                  >
+                    Go to workouts
+                  </Link>
+                </div>
+              )}
+            </div>)}
+           
+
+            {/* Tab 2 */}
+           
+              {ActiveTab === "save" && ( <div className="w-full border-base-300 bg-base-100 rounded-xl p-6">
+              {saveplan.length > 0 ? (
+                <Savecard allSaveplan={allSaveplan} />
+              ) : (
+                 <div className="rounded-2xl border-2 border-[#A1A1AA] flex min-h-[70vh] flex-col items-center justify-center bg-black px-4 text-center">
+                  <h2 className="mt-6 md:text-5xl font-bold text-white">
+                    NOTHING HERE YET
+                  </h2>
+
+                  <p className="mt-3 max-w-md text-gray-400">
+                    Browse the library and add a lift to get today moving.
+                  </p>
+
+                  <Link
+                    href="/"
+                    className="mt-8 my-2 rounded-xl bg-[#C2F800] px-6 py-3 md:font-bold text-black transition hover:bg-[#b5ed00]"
+                  >
+                    Go to workouts
+                  </Link>
+                </div>
+              )}
+            </div>)}
+           
+
+          
+        </div>
+
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const Savecard = ({allSaveplan}:{allSaveplan:Ifitlog[]}) => {
   return (
     <div>
              {allSaveplan.map((plan:Ifitlog, i:number)=>(
-                <div key={i} className="border-b border-gray-700 my-4 bg-[#18181B] px-8 py-3 grid grid-cols-1 md:grid-cols-2 rounded-xl">
+                <div key={i} className="border-b border-gray-700 my-4 bg-[#18181B] px-8 py-3 grid grid-cols-1 lg:grid-cols-2 rounded-xl">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2 items-center">
                     <div className="">
                       <Image src={plan.image} alt="card" width={144} height={80} className="h-20"/>

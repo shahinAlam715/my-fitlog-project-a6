@@ -5,12 +5,13 @@ import Link from 'next/link';
 import { useContext, useState } from 'react';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { FitContext } from '@/context/Contextprovider';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
 
     const {saveplan} = useContext(FitContext)
     const {addplan} = useContext(FitContext)
-
+    const pathName = usePathname()
     const [menu, setmenu] = useState(false)
 
     const handlemenu = ()=>{
@@ -24,22 +25,22 @@ const Navbar = () => {
                     <Image src={logo} alt='logo' width={38} className='w-5 md:w-9.5'/>
                     <h3 className='font-extrabold text-[14px] md:text-[18px] text-[#9CA3AF]'>FITLOG</h3>
                 </div>
-                {menu === true ? ( <div className="block absolute top-12.5 right-5 md:static">
+                {menu === true ? ( <div className="block absolute top-14 right-5 md:static">
                    <ul className='md:flex md:gap-x-4 md:items-center md:justify-center'>
                         <Link href={"/"}>
-                        <li className='font-medium text-[12px] bg-[rgba(194,248,0,0.19)] py-2 px-4 rounded-2xl text-[#C2F800] cursor-pointer'>Workouts</li>
+                        <li className={`font-medium text-[12px] py-2 px-4 rounded-2xl  cursor-pointer ${pathName === "/" ? "bg-[rgba(194,248,0,0.19)] text-[#C2F800]" :"text-[#9CA3AF]"}`}>Workouts</li>
                         </Link>
                         <Link href="/myplain">
-                        <li className='font-medium text-[12px] text-[#9CA3AF] hover:bg-[rgba(194,248,0,0.19)] py-2 px-4 rounded-2xl hover:text-[#C2F800] cursor-pointer'>My Plan</li>
+                        <li className={`font-medium text-[12px] py-2 px-4 rounded-2xl cursor-pointer ${pathName === "/myplain" ? "bg-[rgba(194,248,0,0.19)] text-[#C2F800]" :"text-[#9CA3AF]"}`}>My Plan</li>
                         </Link>
                     </ul>
                 </div>): ( <div className="hidden md:block">
                     <ul className='flex gap-x-4 items-center justify-center'>
                         <Link href={"/"}>
-                        <li className='font-medium text-[12px] bg-[rgba(194,248,0,0.19)] py-2 px-4 rounded-2xl text-[#C2F800] cursor-pointer'>Workouts</li>
+                        <li className={`font-medium text-[12px] py-2 px-4 rounded-2xl  cursor-pointer ${pathName === "/" ? "bg-[rgba(194,248,0,0.19)] text-[#C2F800]" :"text-[#9CA3AF]"}`}>Workouts</li>
                         </Link>
                         <Link href="/myplain">
-                        <li className='font-medium text-[12px] text-[#9CA3AF] hover:bg-[rgba(194,248,0,0.19)] py-2 px-4 rounded-2xl hover:text-[#C2F800] cursor-pointer'>My Plan</li>
+                        <li className={`font-medium text-[12px] py-2 px-4 rounded-2xl cursor-pointer ${pathName === "/myplain" ? "bg-[rgba(194,248,0,0.19)] text-[#C2F800]" :"text-[#9CA3AF]"}`}>My Plan</li>
                         </Link>
                     </ul>
                 </div>)}
