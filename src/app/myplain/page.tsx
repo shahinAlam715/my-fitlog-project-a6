@@ -5,12 +5,15 @@ import Savecard from "../component/Savecard";
 import { FitContext } from "@/context/Contextprovider";
 import Link from "next/link";
 import { Ifitlog } from "@/type";
+import { useSearchParams } from "next/navigation";
 
 const MyplanPage = () => {
-  const [ActiveTab, setActiveTab] = useState<"plan" | "save">("plan");
+  const useSearch = useSearchParams();
+  const tab = useSearch.get("tab");
+  const [ActiveTab, setActiveTab] = useState<"plan" | "save">(
+    tab === "save" ? "save" : "plan",
+  );
   const { addplan, saveplan } = useContext(FitContext);
-
-  console.log(addplan, "addplan");
 
   const currentPlan = ActiveTab === "plan" ? addplan : saveplan;
 
@@ -45,7 +48,7 @@ const MyplanPage = () => {
 
   const allAddplan = sortingPlan(addplan);
   const allSaveplan = sortingPlan(saveplan);
-  // Sorting End
+
   return (
     <div>
       <div className="container mx-auto pt-10 py-4">
@@ -58,7 +61,6 @@ const MyplanPage = () => {
 
         <div className="overflow-hidden rounded-xl border border-gray-700 my-10 gap-2 p-2">
           <div className="grid grid-cols-1 md:grid-cols-3 items-center rounded-2xl border-b border-gray-700 bg-[#18181B] px-8 py-4">
-            {/* LEFT */}
             <div className="flex flex-col">
               <h3 className="text-[14px] font-medium text-gray-400">
                 Exercises
@@ -69,7 +71,6 @@ const MyplanPage = () => {
               </span>
             </div>
 
-            {/* CENTER */}
             <div className="flex flex-col">
               <h3 className="text-[14px] font-medium text-gray-200">Minutes</h3>
 
@@ -78,7 +79,6 @@ const MyplanPage = () => {
               </span>
             </div>
 
-            {/* RIGHT */}
             <div className="flex flex-col">
               <h3 className="text-[14px] font-medium text-gray-200">
                 Calories
@@ -92,15 +92,21 @@ const MyplanPage = () => {
         </div>
 
         <div className="my-10 block md:flex justify-between gap-6 p-2 items-center">
-          {/* LEFT — Tabs */}
           <div className="flex items-center bg-[#151921] px-2 py-2 gap-2 rounded-xl my-2">
-            <button onClick={() => setActiveTab("plan")} className={`${ActiveTab === "plan" ? "bg-black text-[#FFFFFF] py-2 px-6 rounded-xl" :"text-[#8A92A0] py-2 px-6 rounded-xl"}`}>MyPlan</button>
-            <button  onClick={() => setActiveTab("save")} className={`${ActiveTab === "save" ? "bg-black text-[#FFFFFF] py-2 px-6 rounded-xl" :"text-[#8A92A0] py-2 px-6 rounded-xl"}`}>
+            <button
+              onClick={() => setActiveTab("plan")}
+              className={`${ActiveTab === "plan" ? "bg-black text-[#FFFFFF] py-2 px-6 rounded-xl" : "text-[#8A92A0] py-2 px-6 rounded-xl"}`}
+            >
+              MyPlan
+            </button>
+            <button
+              onClick={() => setActiveTab("save")}
+              className={`${ActiveTab === "save" ? "bg-black text-[#FFFFFF] py-2 px-6 rounded-xl" : "text-[#8A92A0] py-2 px-6 rounded-xl"}`}
+            >
               SavePlan
             </button>
           </div>
 
-          {/* RIGHT — Select */}
           <div className="flex gap-2 items-center my-2">
             <h2 className="text-[#8A92A0]">Sort By :</h2>
             <div className="shrink-0 w-25">
@@ -123,9 +129,8 @@ const MyplanPage = () => {
         </div>
 
         <div className="min-w-0 flex-1">
-          
-           
-            {ActiveTab === "plan" && ( <div className="w-full border-base-300 bg-base-100 p-6 rounded-xl">
+          {ActiveTab === "plan" && (
+            <div className="w-full border-base-300 p-6 rounded-xl">
               {addplan.length > 0 ? (
                 <Myplaincard allAddplan={allAddplan} />
               ) : (
@@ -146,16 +151,15 @@ const MyplanPage = () => {
                   </Link>
                 </div>
               )}
-            </div>)}
-           
+            </div>
+          )}
 
-            {/* Tab 2 */}
-           
-              {ActiveTab === "save" && ( <div className="w-full border-base-300 bg-base-100 rounded-xl p-6">
+          {ActiveTab === "save" && (
+            <div className="w-full border-base-300 rounded-xl p-6">
               {saveplan.length > 0 ? (
                 <Savecard allSaveplan={allSaveplan} />
               ) : (
-                 <div className="rounded-2xl border-2 border-[#A1A1AA] flex min-h-[70vh] flex-col items-center justify-center bg-black px-4 text-center">
+                <div className="rounded-2xl border-2 border-[#A1A1AA] flex min-h-[70vh] flex-col items-center justify-center bg-black px-4 text-center">
                   <h2 className="mt-6 md:text-5xl font-bold text-white">
                     NOTHING HERE YET
                   </h2>
@@ -172,12 +176,9 @@ const MyplanPage = () => {
                   </Link>
                 </div>
               )}
-            </div>)}
-           
-
-          
+            </div>
+          )}
         </div>
-
       </div>
     </div>
   );

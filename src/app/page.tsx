@@ -3,11 +3,11 @@ import LibraryPage from "./library/page";
 
 export default function Home() {
   return (
-   <>
-   <div className="">
-    <Banner/>
-    <LibraryPage/>
-   </div>
-   </>
+    <>
+      <div className="">
+        <Banner />
+        <LibraryPage />
+      </div>
+    </>
   );
 }

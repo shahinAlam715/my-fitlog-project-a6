@@ -14,11 +14,13 @@ const Banner = () => {
             <br />
             EVERY SET.
           </h2>
-          <p className='font-normal md:text-[16px] text-[#9CA3AF] my-2'>
+          <p className="font-normal md:text-[16px] text-[#9CA3AF] my-2">
             FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
             into today,s plan, and watch the week,s work add up.
           </p>
-          <button className="px-4 py-2 bg-[#C2F800] my-4 rounded-[5px] text-black text-[12px] font-bold">BROWSE WORKOUTS</button>
+          <button className="px-4 py-2 bg-[#C2F800] my-4 rounded-[5px] text-black text-[12px] font-bold">
+            BROWSE WORKOUTS
+          </button>
         </div>
         <div className="flex justify-center md:justify-end">
           <Image src={banimg} alt="banimg" height={334} width={334} />

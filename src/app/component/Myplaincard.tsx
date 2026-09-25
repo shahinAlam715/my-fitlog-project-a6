@@ -2,6 +2,7 @@
 import { FitContext } from "@/context/Contextprovider";
 import { Ifitlog } from "@/type";
 import Image from "next/image";
+import Link from "next/link";
 import { useContext } from "react";
 import { FaCheck, FaFire } from "react-icons/fa";
 import { IoIosStarOutline } from "react-icons/io";
@@ -9,13 +10,17 @@ import { MdAccessTime } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 import { toast } from "react-toastify";
 
-const Myplaincard = ({allAddplan}:{allAddplan:Ifitlog[]}) => {
+const Myplaincard = ({ allAddplan }: { allAddplan: Ifitlog[] }) => {
   const { addplan, setAddplan } = useContext(FitContext);
 
   const handledelete = (plan: Ifitlog) => {
     const removeData = addplan.filter((item) => item.id !== plan.id);
     setAddplan(removeData);
     toast.warning(`Plan is remove !`);
+  };
+
+  const handledone = (plan: Ifitlog) => {
+    toast.success(`${plan.name} is Done !`);
   };
 
   return (
@@ -68,17 +73,22 @@ const Myplaincard = ({allAddplan}:{allAddplan:Ifitlog[]}) => {
 
           <div className="flex justify-start md:justify-end">
             <div className="block md:flex gap-4 my-4">
-              <button className="px-4 py-2 my-4 rounded-xl text-[12px] font-bold border-2 border-[#374151]">
-                <span className="flex lg:gap-4 text-[#9CA3AF] items-center">
-                  Save for later
-                </span>
-              </button>
-              <button className="px-4 py-2 bg-[#C2F800] my-4 rounded-xl text-[12px] font-bold text-[#0F1115]">
+              <Link href={`/library/${plan.id}`}>
+                <button className="px-4 py-2 my-4 rounded-xl text-[12px] font-bold border-2 border-[#374151]">
+                  <span className="flex gap-4 text-[#9CA3AF] items-center">
+                    View Details
+                  </span>
+                </button>
+              </Link>
+              <button
+                onClick={() => handledone(plan)}
+                className="px-4 py-2 bg-[#C2F800] my-4 rounded-xl text-[12px] font-bold text-[#0F1115]"
+              >
                 <span className="flex lg:gap-4 items-center">
                   <i>
                     <FaCheck />
                   </i>{" "}
-                  Add to today,s plan
+                  Mark as Done
                 </span>
               </button>
               <button className="px-4 py-2 my-4 rounded-xl text-[12px] font-bold text-[#FFFFFF]">

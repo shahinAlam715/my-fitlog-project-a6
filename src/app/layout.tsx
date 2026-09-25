@@ -35,12 +35,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <Contextprovider>
-          <Navbar/>
-        <div className="bg-black">
-          {children}
-        </div>
-        <Footer/>
-        <ToastContainer />
+          <Navbar />
+          <div className="bg-black">{children}</div>
+          <Footer />
+          <ToastContainer />
         </Contextprovider>
       </body>
     </html>

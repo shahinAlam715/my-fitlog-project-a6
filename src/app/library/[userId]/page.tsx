@@ -47,7 +47,7 @@ const DetailsPage = async ({ params }: IdetailsProps) => {
 
           <div className="my-10">
             <div className="overflow-hidden rounded-lg border border-gray-700 w-full overflow-x-auto">
-              <table className="w-full max-w-[1280px] border-collapse">
+              <table className="w-full max-w-7xl border-collapse">
                 <tbody>
                   <tr className="border-b border-gray-700 bg-[#18181B]">
                     <td className="px-3 py-3 text-left text-[12px] font-medium text-gray-400 sm:px-4 sm:text-[14px]">

@@ -7,9 +7,7 @@ const NotFound = () => {
         404
       </h1>
 
-      <h2 className="mt-6 text-3xl font-bold text-white">
-        Page Not Found
-      </h2>
+      <h2 className="mt-6 text-3xl font-bold text-white">Page Not Found</h2>
 
       <p className="mt-3 max-w-md text-gray-400">
         Sorry, the page you are looking for does not exist or may have been
